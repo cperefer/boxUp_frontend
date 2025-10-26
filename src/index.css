@@ -3,6 +3,7 @@
 #root {
   font-family: Roboto, Inter, sans-serif;
 }
+
 @theme inline {
   --color-primary: oklch(0.4837 0.2141 272);
   --color-complementary: oklch(0.8228 0.1557 105.27);

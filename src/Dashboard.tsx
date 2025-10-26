@@ -1,5 +1,11 @@
+import { WelcomeUser } from "./WelcomeUser"
+
 export const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+      <div className="flex flex-col items-center">
+        <WelcomeUser />
+      </div>
+    </div>
   )
 }
