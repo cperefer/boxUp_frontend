@@ -1,3 +1,4 @@
+import { NextReservations } from "./NextReservations"
 import { WelcomeUser } from "./WelcomeUser"
 
 export const Dashboard = () => {
@@ -5,6 +6,7 @@ export const Dashboard = () => {
     <div>
       <div>
         <WelcomeUser />
+        <NextReservations />
       </div>
     </div>
   )
