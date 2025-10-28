@@ -4,6 +4,12 @@
   font-family: Roboto, Inter, sans-serif;
 }
 
+svg {
+  display: inline;
+  height: 20px;
+  width: 20px;
+}
+
 @theme inline {
   --color-primary: oklch(0.4837 0.2141 272);
   --color-complementary: oklch(0.8228 0.1557 105.27);
