@@ -12,11 +12,11 @@ export const ReservationComponent = ({ reservation }: { reservation: Reservation
   const handleCancelReservation = () => {
 
   }
-
+  // https://medium.com/@royeeshemesh/customizable-confirmation-dialog-in-react-js-using-hooks-context-api-and-typescript-2ab52a46228
   return (
     <div className="w-full justify-center flex flex-row pt-2">
       <div className="w-75 pb-1 border-b border-b-primary" key={reservation.id}>
-        <p><LuCalendarClock className="mr-2 w-5 h-5" />{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`}</p>
+        <p><LuCalendarClock className="mr-2" />{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`}</p>
         <p className="ml-2">{reservation.type}</p>
       </div>
       <div className="flex flex-row items-center w-25 gap-2 border-b border-b-primary">

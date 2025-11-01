@@ -8,7 +8,7 @@ export const NextReservations = () => {
       <div className="w-full px-2">
         {
           NextReservationsMock.map((reservation: Reservation) => (
-            <ReservationComponent reservation={reservation} />
+            <ReservationComponent key={reservation.id} reservation={reservation} />
           ))
         }
       </div>
