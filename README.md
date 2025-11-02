@@ -1,6 +1,6 @@
 # BoxUp - Frontend
 
-https://img.shields.io/badge/Status-In_Development-green
+<img src="https://img.shields.io/badge/Status-In_Development-green" />
 
 ## Description
 
