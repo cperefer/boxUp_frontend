@@ -1,28 +1,36 @@
 import type { PropsWithChildren } from "react";
-import { Link } from "react-router"
 
 interface Props extends PropsWithChildren {
   type: string;
-  action: string;
+  size?: string;
+  action: () => void;
 }
 
-interface Colors {
+interface Dictionary {
   [type: string]: string;
 }
 
-const colors: Colors = {
+const colors: Dictionary = {
   'caution': 'bg-amber-500 text-white',
   'info': 'bg-indigo-500 text-white',
-  'error': 'bg-error text-white',
-  'success': 'bg-ok text-white',
+  'error': 'bg-error text-black',
+  'success': 'bg-ok text-black',
 }
 
-export const Button = ({ action, children, type }: Props) => {
+const variant: Dictionary = {
+  'sm': 'w-12 h-10',
+  'md': 'w-45 h-10',
+}
+
+export const Button = ({ action, children, type, size = 'md' }: Props) => {
   return (
-    <div className="text-center">
-      <p className={`${colors[type]} inline-block rounded-md p-2`}>
-        <Link to={action}>{children}</Link>
+    <>
+      <p
+        className={`${colors[type]} ${variant[size]} rounded-lg p-2 cursor-pointer flex justify-center items-center`}
+        onClick={action}
+      >
+        {children}
       </p>
-    </div>
+    </>
   )
 }

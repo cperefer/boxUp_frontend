@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { Button } from "@/components/Button";
 import { useParseDate } from "@hooks/useParseDate";
 import { SubscriptionsMock } from "@mocks/Subscriptions.mock"
@@ -8,6 +9,8 @@ import { BiDumbbell } from "react-icons/bi";
 const subscription = SubscriptionsMock.filter((subscription => subscription.status === 'active'))[0];
 
 export const SubscriptionStatus = () => {
+  const navigate = useNavigate();
+
   const isNearlyOversubscription = (date: number): ReactNode => {
     const today = new Date().getDate();
     const endDay = new Date(date).getDate();
@@ -31,7 +34,12 @@ export const SubscriptionStatus = () => {
         <p className="text-justify">Con tu suscripción tienes acceso a: <span className="italic">{subscription.accessTo.join(', ')}</span></p>
         <p>Créditos semanales: {subscription.weeklyCredits}</p>
         <p>Créditos restantes: {subscription.weeklyCreditsLeft}</p>
-        <Button type='info' action='/subscriptions'>Suscripciones</Button>
+        <div className="flex flex-col items-center">
+          <Button
+            type='info'
+            action={() => { navigate('/subscriptions') }}
+          >Suscripciones</Button>
+        </div>
       </div>
     </section>
   )
