@@ -1,27 +1,38 @@
+import { Button } from "@/components/Button";
 import { useParseDate } from "@hooks/useParseDate";
-import { SubscriptionsMock, type Subscription } from "@mocks/Subscriptions.mock"
+import { SubscriptionsMock } from "@mocks/Subscriptions.mock"
+import type { ReactNode } from "react";
 import { BiDumbbell } from "react-icons/bi";
 
 
-const subscriptions = SubscriptionsMock;
+const subscription = SubscriptionsMock.filter((subscription => subscription.status === 'active'))[0];
 
 export const SubscriptionStatus = () => {
+  const isNearlyOversubscription = (date: number): ReactNode => {
+    const today = new Date().getDate();
+    const endDay = new Date(date).getDate();
+
+    if (endDay - today <= 7) {
+      return (
+        <p className="text-red-500 font-bold">Tu suscripción está a punto de caducar</p>
+      )
+    }
+  }
+
   return (
-    <section className="flex flex-col items-center py-2 w-full md:w-2/5">
+    <section className="flex flex-col items-center p-2 w-full md:w-2/5">
       <p className="text-xl">Tus suscripciones activas</p>
-      {
-        subscriptions.map(({ id, accessTo, name, status, validFrom, validTo, weeklyCredits, weeklyCreditsLeft }: Subscription) =>
-          status === 'active' && (
-            <div key={id}>
-              <p className="text-center"><BiDumbbell />{name}</p>
-              <p>Válidad desde el {useParseDate(validFrom)} hasta el {useParseDate(validTo)}</p>
-              <p>Con tu suscripción tienes acceso a: <span className="italic">{accessTo.join(', ')}</span></p>
-              <p>Créditos semanales: {weeklyCredits}</p>
-              <p>Créditos restantes: {weeklyCreditsLeft}</p>
-            </div>
-          )
-        )
-      }
+      <div>
+        <p className="text-center"><BiDumbbell />{subscription.name}</p>
+        <p>Válidad desde el {useParseDate(subscription.validFrom)} hasta el {useParseDate(subscription.validTo)}</p>
+        {
+          isNearlyOversubscription(subscription.validTo)
+        }
+        <p className="text-justify">Con tu suscripción tienes acceso a: <span className="italic">{subscription.accessTo.join(', ')}</span></p>
+        <p>Créditos semanales: {subscription.weeklyCredits}</p>
+        <p>Créditos restantes: {subscription.weeklyCreditsLeft}</p>
+        <Button type='info' action='/subscriptions'>Suscripciones</Button>
+      </div>
     </section>
   )
 }
