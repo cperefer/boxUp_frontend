@@ -32,7 +32,7 @@ export const SubscriptionsMock: Subscription[] = [
     accessTo: [
       'CrossFit',
       'Halterofilia',
-      'Gymanstics',
+      'Gymnastics',
       'Sábado especial'
     ],
     name: 'Completa',
