@@ -20,6 +20,9 @@
       "@/*": [
         "./src/*"
       ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
       "@mocks/*": [
         "./src/mocks/*"
       ]
