@@ -1,4 +1,4 @@
-import type { Reservation } from "../mocks/NextReservations.mock"
+import type { Reservation } from "../../mocks/NextReservations.mock"
 import { FiEye, FiTrash } from "react-icons/fi";
 import { LuCalendarClock } from "react-icons/lu";
 
