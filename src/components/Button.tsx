@@ -13,8 +13,8 @@ interface Colors {
 const colors: Colors = {
   'caution': 'bg-amber-500 text-white',
   'info': 'bg-indigo-500 text-white',
-  'error': 'bg-red-500 text-white',
-  'success': 'bg-green-500 text-white',
+  'error': 'bg-error text-white',
+  'success': 'bg-ok text-white',
 }
 
 export const Button = ({ action, children, type }: Props) => {
