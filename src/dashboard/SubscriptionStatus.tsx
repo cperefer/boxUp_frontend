@@ -1,5 +1,5 @@
-import { useParseDate } from "../hooks/useParseDate";
-import { SubscriptionsMock, type Subscription } from "../mocks/Subscriptions.mock"
+import { useParseDate } from "@hooks/useParseDate";
+import { SubscriptionsMock, type Subscription } from "@mocks/Subscriptions.mock"
 import { BiDumbbell } from "react-icons/bi";
 
 

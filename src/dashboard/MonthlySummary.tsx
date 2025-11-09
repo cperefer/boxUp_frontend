@@ -1,7 +1,5 @@
 import { FaWalking, FaClock } from "react-icons/fa";
-import { GiPodiumWinner } from "react-icons/gi";
-import { GiWeightLiftingUp } from "react-icons/gi";
-
+import { GiPodiumWinner, GiWeightLiftingUp } from "react-icons/gi";
 
 export const MonthlySummary = () => {
   return (
