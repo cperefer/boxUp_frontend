@@ -34,7 +34,7 @@ export const SubscriptionStatus = () => {
         <p className="text-justify">Con tu suscripción tienes acceso a: <span className="italic">{subscription.accessTo.join(', ')}</span></p>
         <p>Créditos semanales: {subscription.weeklyCredits}</p>
         <p>Créditos restantes: {subscription.weeklyCreditsLeft}</p>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center pt-2">
           <Button
             type='info'
             action={() => { navigate('/subscriptions') }}

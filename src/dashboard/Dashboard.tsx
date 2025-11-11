@@ -1,6 +1,7 @@
 import { MonthlySummary } from "./MonthlySummary"
 import { NextReservations } from "./NextReservations"
 import { SubscriptionStatus } from "./SubscriptionStatus"
+import { UpcomingEvents } from "./UpcomingEvents"
 import { WelcomeUser } from "./WelcomeUser"
 
 export const Dashboard = () => {
@@ -13,6 +14,7 @@ export const Dashboard = () => {
       </div>
       <div className="flex flex-col md:flex-row md:justify-around">
         <SubscriptionStatus />
+        <UpcomingEvents />
       </div>
     </div>
   )
