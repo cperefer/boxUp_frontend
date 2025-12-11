@@ -26,20 +26,30 @@ export const SubscriptionStatus = () => {
     <section className="flex flex-col items-center p-2 w-full md:w-2/5">
       <p className="text-xl">Tus suscripciones activas</p>
       <div>
-        <p className="text-center"><BiDumbbell />{subscription.name}</p>
-        <p>Válidad desde el {useParseDate(subscription.validFrom)} hasta el {useParseDate(subscription.validTo)}</p>
         {
-          isNearlyOversubscription(subscription.validTo)
+          subscription ? (
+            <>
+              <p className="text-center"><BiDumbbell />{subscription.name}</p>
+              <p>Válidad desde el {useParseDate(subscription.validFrom)} hasta el {useParseDate(subscription.validTo)}</p>
+              {
+                isNearlyOversubscription(subscription.validTo)
+              }
+              <p className="text-justify">Con tu suscripción tienes acceso a: <span className="italic">{subscription.accessTo.join(', ')}</span></p>
+              <p>Créditos semanales: {subscription.weeklyCredits}</p>
+              <p>Créditos restantes: {subscription.weeklyCreditsLeft}</p>
+              <div className="flex flex-col items-center pt-2">
+                <Button
+                  type='info'
+                  action={() => { navigate('/subscriptions') }}
+                >Suscripciones</Button>
+              </div>
+            </>
+          ) :
+            (
+              <p className="text-center text-red-500">No tienes suscripciones activas</p>
+            )
         }
-        <p className="text-justify">Con tu suscripción tienes acceso a: <span className="italic">{subscription.accessTo.join(', ')}</span></p>
-        <p>Créditos semanales: {subscription.weeklyCredits}</p>
-        <p>Créditos restantes: {subscription.weeklyCreditsLeft}</p>
-        <div className="flex flex-col items-center pt-2">
-          <Button
-            type='info'
-            action={() => { navigate('/subscriptions') }}
-          >Suscripciones</Button>
-        </div>
+
       </div>
     </section>
   )
