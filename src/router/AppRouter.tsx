@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import { Dashboard } from "../dashboard/Dashboard";
+import { Dashboard } from "@/dashboard/pages/Dashboard";
 
 export const appRouter = createBrowserRouter([
   {
