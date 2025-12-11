@@ -1,8 +1,8 @@
-import { MonthlySummary } from "./MonthlySummary"
-import { NextReservations } from "./NextReservations"
-import { SubscriptionStatus } from "./SubscriptionStatus"
-import { UpcomingEvents } from "./UpcomingEvents"
-import { WelcomeUser } from "./WelcomeUser"
+import { MonthlySummary } from "../components/MonthlySummary"
+import { NextReservations } from "../components/NextReservations"
+import { SubscriptionStatus } from "../components/SubscriptionStatus"
+import { UpcomingEvents } from "../components/UpcomingEvents"
+import { WelcomeUser } from "../components/WelcomeUser"
 
 export const Dashboard = () => {
   return (
