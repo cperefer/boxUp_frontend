@@ -19,7 +19,7 @@ const variant: Dictionary = {
   'md': 'w-45 h-10',
 }
 
-export const Button = ({ action, children, type, size = 'md' }: Props) => {
+export const CustomButton = ({ action, children, type, size = 'md' }: Props) => {
   return (
     <>
       <p

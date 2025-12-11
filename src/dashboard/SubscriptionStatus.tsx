@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { Button } from "@/components/Button";
+import { CustomButton } from "@/components/custom/CustomButton";
 import { useParseDate } from "@hooks/useParseDate";
 import { SubscriptionsMock } from "@mocks/Subscriptions.mock"
 import type { ReactNode } from "react";
@@ -38,10 +38,10 @@ export const SubscriptionStatus = () => {
               <p>Créditos semanales: {subscription.weeklyCredits}</p>
               <p>Créditos restantes: {subscription.weeklyCreditsLeft}</p>
               <div className="flex flex-col items-center pt-2">
-                <Button
+                <CustomButton
                   type='info'
                   action={() => { navigate('/subscriptions') }}
-                >Suscripciones</Button>
+                >Suscripciones</CustomButton>
               </div>
             </>
           ) :

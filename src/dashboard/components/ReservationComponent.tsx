@@ -2,7 +2,7 @@ import type { Reservation } from "../../mocks/NextReservations.mock"
 import { FiEye, FiTrash } from "react-icons/fi";
 import { LuCalendarClock } from "react-icons/lu";
 import { useParseDate } from "../../hooks/useParseDate";
-import { Button } from "@/components/Button";
+import { CustomButton } from "@/components/custom/CustomButton";
 
 export const ReservationComponent = ({ reservation }: { reservation: Reservation }) => {
   const handleSeeReservation = () => {
@@ -20,8 +20,8 @@ export const ReservationComponent = ({ reservation }: { reservation: Reservation
         <p className="ml-2">{reservation.type}</p>
       </div>
       <div className="flex flex-row items-center w-25 gap-2 border-b border-b-primary">
-        <Button type="success" action={handleSeeReservation} size='sm'><FiEye /></Button>
-        <Button type="error" action={handleCancelReservation} size='sm'><FiTrash /></Button>
+        <CustomButton type="success" action={handleSeeReservation} size='sm'><FiEye /></CustomButton>
+        <CustomButton type="error" action={handleCancelReservation} size='sm'><FiTrash /></CustomButton>
       </div>
     </div>
   )
