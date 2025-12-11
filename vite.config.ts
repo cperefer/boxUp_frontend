@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import path from "path"
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
@@ -20,4 +20,8 @@ export default defineConfig({
       "@mocks": path.resolve(__dirname, "./src/mocks"),
     },
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+  }
 })
