@@ -3,7 +3,7 @@ import { BsSpeaker } from 'react-icons/bs';
 
 export const Navbar = () => {
   return (
-    <div className="flex flex-row items-center justify-between px-2.5 bg-primary w-screen h-10 text-white">
+    <div className="flex flex-row items-center justify-between px-2.5 bg-primary w-screen h-10 text-white relative z-2">
       <div className='h-full w-10 flex flex-row-reverse items-center text-2xl'>
         <AiOutlineMenu />
       </div>
