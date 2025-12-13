@@ -9,7 +9,6 @@ interface Props {
   size?: Size;
 }
 
-
 export const CustomProfilePicture = ({ size = 'md' }: Props) => {
 
   return (
