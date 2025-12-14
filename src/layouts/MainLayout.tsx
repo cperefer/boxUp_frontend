@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import { Outlet } from "react-router"
-import { LateralMenu } from "@/components/lateralMenu/LateralMenu"
+import { LateralMenu } from "@/lateralMenu/LateralMenu"
 import { Navbar } from "@/components/navbar/Navbar"
 import { useMainStore } from "@/store/mainStore"
 
