@@ -11,7 +11,7 @@ export const Navbar = ({ menuButtonRef }: Props) => {
   const { toggleMenu, isMenuOpen } = useMainStore();
 
   return (
-    <div className="flex flex-row items-center justify-between px-2.5 bg-primary w-screen h-10 text-white relative z-2">
+    <div className="fixed flex flex-row items-center justify-between px-2.5 bg-primary w-screen h-10 text-white z-2">
       <div
         ref={menuButtonRef}
         onClick={toggleMenu}
