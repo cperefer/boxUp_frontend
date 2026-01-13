@@ -13,10 +13,12 @@ interface Dictionary {
 const variant: Dictionary = {
   'caution': 'bg-amber-500 text-white',
   'info': 'bg-indigo-500 text-white',
+  'auth': 'bg-black text-white',
   'error': 'bg-error text-black',
   'success': 'bg-ok text-black',
   'sm': 'w-12 h-10',
   'md': 'w-45 h-10',
+  'fit': 'w-full h-10'
 }
 
 export const CustomButton = ({ action, children, type, size = 'md' }: Props) => {
