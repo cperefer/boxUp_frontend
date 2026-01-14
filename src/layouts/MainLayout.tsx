@@ -2,12 +2,12 @@ import { useEffect, useRef } from "react"
 import { Outlet } from "react-router"
 import { LateralMenu } from "@/lateralMenu/LateralMenu"
 import { Navbar } from "@/components/navbar/Navbar"
-import { useMainStore } from "@/store/mainStore"
+import { useUIStore } from "@/store/uiStore"
 
 export const MainLayout = () => {
   const menuRef = useRef<HTMLDivElement>(null)
   const menuButtonRef = useRef<HTMLDivElement>(null)
-  const { isMenuOpen, closeMenu } = useMainStore()
+  const { isMenuOpen, closeMenu } = useUIStore()
 
   useEffect(() => {
     if (!isMenuOpen) {

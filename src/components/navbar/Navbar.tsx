@@ -1,4 +1,4 @@
-import { useMainStore } from '@/store/mainStore';
+import { useUIStore } from '@/store/uiStore';
 import type { RefObject } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { BsSpeaker } from 'react-icons/bs';
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Navbar = ({ menuButtonRef }: Props) => {
-  const { toggleMenu, isMenuOpen } = useMainStore();
+  const { toggleMenu, isMenuOpen } = useUIStore();
 
   return (
     <div className="fixed flex flex-row items-center justify-between px-2.5 bg-primary w-screen h-10 text-white z-2">

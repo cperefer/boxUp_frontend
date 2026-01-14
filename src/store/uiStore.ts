@@ -1,12 +1,12 @@
 import { create } from 'zustand'
 
-interface MainState {
+interface UIState {
   isMenuOpen: boolean;
   toggleMenu: () => void;
   closeMenu: () => void;
 }
 
-export const useMainStore = create<MainState>()((set) => ({
+export const useUIStore = create<UIState>()((set) => ({
   isMenuOpen: false,
   toggleMenu: () => {
     set((state) => ({
