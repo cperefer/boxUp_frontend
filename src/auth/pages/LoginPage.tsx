@@ -1,7 +1,8 @@
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { CustomButton } from "@/components/custom/CustomButton"
+import { useAuthStore } from "@/store/authStore";
 
 type Inputs = {
   email: string
@@ -9,14 +10,19 @@ type Inputs = {
 }
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
+  const { login } = useAuthStore();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log('sent', data)
+    const isValid = await login(data.email, data.password);
+
+    isValid && navigate('/dashboard');
   }
 
   return (
@@ -24,7 +30,7 @@ export const LoginPage = () => {
       <div className="w-full xl:w-1/2 h-4/6 max-h-150 flex flex-col px-10 bg-white relative">
         <p className="text-2xl font-bold py-3">Bienvenido de nuevo!</p>
         <p className="text-lg pb-3">Inicia sesión para acceder a tu información</p>
-        <form className="flex flex-col" onSubmit={() => console.log('submit')}>
+        <form className="flex flex-col">
           <div className="w-9/10 md:w-4/5 flex flex-col pb-3">
             <label htmlFor='email'>Correo electrónico</label>
             <input
