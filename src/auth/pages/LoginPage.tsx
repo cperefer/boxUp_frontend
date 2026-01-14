@@ -10,8 +10,8 @@ export const LoginPage = () => {
   }
 
   return (
-    <div className="w-5/6 xl:w-2/3 flex flex-col xl:flex-row justify-center">
-      <div className="w-full xl:w-1/2 h-4/6 md:h-full flex flex-col px-10 bg-white relative">
+    <div className="w-5/6 xl:w-2/3 flex flex-col xl:flex-row justify-center items-center">
+      <div className="w-full xl:w-1/2 h-4/6 max-h-150 flex flex-col px-10 bg-white relative">
         <p className="text-2xl font-bold py-3">Bienvenido de nuevo!</p>
         <p className="text-lg pb-3">Inicia sesión para acceder a tu información</p>
         <form className="flex flex-col" onSubmit={() => console.log('submit')}>
@@ -64,7 +64,7 @@ export const LoginPage = () => {
         </form>
         <p className="text-sm md:text-lg absolute bottom-1">¿No tienes una cuenta? <Link to='/'>Contacta con tu box.</Link></p>
       </div>
-      <div className="hidden xl:block xl:w-1/2 bg-[url(/bg/auth.jpg)] bg-cover bg-white"></div>
+      <div className="hidden xl:block xl:w-1/2 h-4/6 max-h-150 bg-[url(/bg/auth.jpg)] bg-cover bg-white"></div>
     </div>
   )
 }
