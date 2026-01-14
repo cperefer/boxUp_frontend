@@ -1,12 +1,22 @@
-import { CustomButton } from "@/components/custom/CustomButton"
+import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router"
+import { CustomButton } from "@/components/custom/CustomButton"
+
+type Inputs = {
+  email: string
+  password: string
+}
 
 export const LoginPage = () => {
-  const { register, handleSubmit, formState: { errors }, } = useForm<IFormInput>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>()
 
-  const onSubmit = () => {
-    console.log('sent')
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log('sent', data)
   }
 
   return (
