@@ -4,6 +4,7 @@ import { MainLayout } from "@/layouts/MainLayout";
 import { LoginPage } from "@/auth/pages/LoginPage";
 import { AuthLayout } from "@/auth/pages/layouts/AuthLayout";
 import { AuthenticatedRoutes, NotAuthenticatedRoutes } from "./ProtectedRoutes";
+import { ReservationsPage } from "@/reservations/pages/ReservationsPage";
 
 export const appRouter = createBrowserRouter([
   {
@@ -20,15 +21,19 @@ export const appRouter = createBrowserRouter([
     ]
   },
   {
-    path: "/dashboard",
+    path: "/",
     element:
       <AuthenticatedRoutes>
         <MainLayout />
       </AuthenticatedRoutes>,
     children: [
       {
-        index: true,
+        path: '/dashboard',
         element: <Dashboard />
+      },
+      {
+        path: '/reservations',
+        element: <ReservationsPage />
       },
     ]
   },
