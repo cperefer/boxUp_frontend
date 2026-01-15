@@ -1,18 +1,16 @@
+import { userAthlete } from "@/mocks/user.mock";
+
 export const loginAction = async (email:string, password:string)  => {
-  // En el futuro esto llamará a un endpoint y devolverá una promesa
+  // En el futuro esto llamará a un endpoint, de momento lo simulamos
 
   if (email !== 'a@a.es' && password !== '1234abcd') {
     throw new Error('auth error');
   }
+
+  await new Promise((res) => setTimeout(res, 500));
   
   const data = {
-    user: {
-      id: '0',
-      email,
-      fullName: 'Miguel Pérez',
-      hasActiveAccount: true,
-      role: 'athlete'
-    },
+    user: userAthlete,
     token: '1234abcd'
   }
 

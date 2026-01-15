@@ -1,5 +1,6 @@
 import { loginAction } from '@/auth/actions/login.action';
 import type { User } from '@/interfaces/User';
+import { userAthlete } from '@/mocks/user.mock';
 import { create } from 'zustand'
 
 type AuthStatus = 'logged' | 'not-logged' | 'checking';
@@ -8,6 +9,7 @@ interface AuthState {
   authToken: string | null;
   status: AuthStatus;
   user: User | null;
+  checkAuth: () => void;
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   register: () => void;
@@ -15,9 +17,40 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()((set) => ({
   authToken: null,
-  status: 'not-logged',
+  status: 'checking',
   user: null,
+  checkAuth: () => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      set({
+        authToken: null,
+        status: 'not-logged',
+        user: null,
+      });
+
+      return;
+    }
+
+    try {
+      // Validar token (que ahora no se hace, obvio, porque como no lo valide contra mis narices...)
+    
+      set({
+        authToken: token,
+        user: userAthlete,
+        status: 'logged'
+      })
+    } catch(_) {
+      set({
+        authToken: null,
+        status: 'not-logged',
+        user: null,
+      });
+    }
+  },
   login: async (email: string, password: string) => {
+    set({status: 'checking'});
+
     try {
       const data = await loginAction(email, password);
       console.log(data)
