@@ -3,7 +3,7 @@ import { Dashboard } from "@/dashboard/pages/Dashboard";
 import { MainLayout } from "@/layouts/MainLayout";
 import { LoginPage } from "@/auth/pages/LoginPage";
 import { AuthLayout } from "@/auth/pages/layouts/AuthLayout";
-import { AuthenticatedRoutes } from "./ProtectedRoutes";
+import { AuthenticatedRoutes, NotAuthenticatedRoutes } from "./ProtectedRoutes";
 
 export const appRouter = createBrowserRouter([
   {
@@ -12,7 +12,10 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LoginPage />
+        element:
+          <NotAuthenticatedRoutes>
+            <LoginPage />
+          </NotAuthenticatedRoutes>
       },
     ]
   },
