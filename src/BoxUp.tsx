@@ -7,7 +7,7 @@ export const BoxUp = () => {
   const { checkAuth } = useAuthStore();
   useEffect(() => {
     checkAuth()
-  }, []);
+  }, [checkAuth]);
 
   return (
     <div className="flex flex-col">

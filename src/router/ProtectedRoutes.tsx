@@ -1,12 +1,13 @@
 import { useAuthStore } from "@/store/authStore";
 import type { PropsWithChildren } from "react";
 import { Navigate } from "react-router";
+import { MoonLoader } from "react-spinners";
 
 export const NotAuthenticatedRoutes = ({ children }: PropsWithChildren) => {
   const { status } = useAuthStore();
 
   if (status === 'checking') {
-    return null;
+    return <MoonLoader />;
   }
 
   if (status === 'logged') {
@@ -20,7 +21,7 @@ export const AuthenticatedRoutes = ({ children }: PropsWithChildren) => {
   const { status } = useAuthStore();
 
   if (status === 'checking') {
-    return null;
+    return <MoonLoader />;
   }
 
   if (status === 'not-logged') {
@@ -34,7 +35,7 @@ export const CoachRoutes = ({ children }: PropsWithChildren) => {
   const { status, user } = useAuthStore();
 
   if (status === 'checking') {
-    return null;
+    return <MoonLoader />;
   }
 
   if (status === 'not-logged' || (user?.role !== 'admin' && user?.role !== 'coach')) {
@@ -48,7 +49,7 @@ export const AdminRoutes = ({ children }: PropsWithChildren) => {
   const { status, user } = useAuthStore();
 
   if (status === 'checking') {
-    return null;
+    return <MoonLoader />;
   }
 
   if (status === 'not-logged' || user?.role !== 'admin') {
