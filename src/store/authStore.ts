@@ -15,7 +15,7 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()((set) => ({
   authToken: null,
-  status: 'checking',
+  status: 'not-logged',
   user: null,
   login: async (email: string, password: string) => {
     try {
@@ -31,7 +31,6 @@ export const useAuthStore = create<AuthState>()((set) => ({
   
       return true;
     } catch (_) {
-      console.log('aaaaaaaaaaaaaa')
       set({
         authToken: null,
         status: 'not-logged',
