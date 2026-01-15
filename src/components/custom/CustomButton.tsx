@@ -1,7 +1,9 @@
 import type { PropsWithChildren } from "react";
 
+type ButtonType = 'caution' | 'info' | 'auth' | 'error' | 'success';
+
 interface Props extends PropsWithChildren {
-  type: string;
+  type: ButtonType;
   size?: string;
   disabled?: boolean
   action: () => void;
