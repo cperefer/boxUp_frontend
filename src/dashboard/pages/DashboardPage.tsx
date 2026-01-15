@@ -4,7 +4,7 @@ import { SubscriptionStatus } from "../components/SubscriptionStatus"
 import { UpcomingEvents } from "../components/UpcomingEvents"
 import { WelcomeUser } from "../components/WelcomeUser"
 
-export const Dashboard = () => {
+export const DashboardPage = () => {
   return (
     <div>
       <WelcomeUser />

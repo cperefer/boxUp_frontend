@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import { Dashboard } from "@/dashboard/pages/Dashboard";
+import { DashboardPage } from "@/dashboard/pages/DashboardPage";
 import { MainLayout } from "@/layouts/MainLayout";
 import { LoginPage } from "@/auth/pages/LoginPage";
 import { AuthLayout } from "@/auth/pages/layouts/AuthLayout";
@@ -29,7 +29,7 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <Dashboard />
+        element: <DashboardPage />
       },
       {
         path: '/reservations',
