@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router"
 import { CustomButton } from "@/components/custom/CustomButton"
 import { useAuthStore } from "@/store/authStore";
+import { useState } from "react";
 
 type Inputs = {
   email: string
@@ -10,6 +11,7 @@ type Inputs = {
 }
 
 export const LoginPage = () => {
+  const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuthStore();
   const {
@@ -19,9 +21,11 @@ export const LoginPage = () => {
   } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    setIsLogin(true);
     console.log('sent', data)
     const isValid = await login(data.email, data.password);
 
+    setIsLogin(false);
     isValid && navigate('/dashboard');
   }
 
@@ -75,7 +79,7 @@ export const LoginPage = () => {
             <p className="text-sm text-right py-1"><Link to='/'>Olvidaste tu contraseña?</Link></p>
           </div>
           <div className="w-9/10 md:w-4/5 flex flex-col pb-3">
-            <CustomButton type="auth" size='fit' action={handleSubmit(onSubmit)}>Iniciar sesión</CustomButton>
+            <CustomButton type="auth" size='fit' action={handleSubmit(onSubmit)} disabled={isLogin}>Iniciar sesión</CustomButton>
           </div>
         </form>
         <p className="text-sm md:text-lg absolute bottom-1">¿No tienes una cuenta? <Link to='/'>Contacta con tu box.</Link></p>
