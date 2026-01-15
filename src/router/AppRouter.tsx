@@ -3,6 +3,7 @@ import { Dashboard } from "@/dashboard/pages/Dashboard";
 import { MainLayout } from "@/layouts/MainLayout";
 import { LoginPage } from "@/auth/pages/LoginPage";
 import { AuthLayout } from "@/auth/pages/layouts/AuthLayout";
+import { AuthenticatedRoutes } from "./ProtectedRoutes";
 
 export const appRouter = createBrowserRouter([
   {
@@ -17,7 +18,10 @@ export const appRouter = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <MainLayout />,
+    element:
+      <AuthenticatedRoutes>
+        <MainLayout />
+      </AuthenticatedRoutes>,
     children: [
       {
         index: true,
@@ -27,6 +31,6 @@ export const appRouter = createBrowserRouter([
   },
   {
     path: '*',
-    element: <Navigate to='/login' />
+    element: <Navigate to='/dashboard' />
   }
 ])
