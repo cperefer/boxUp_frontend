@@ -2,6 +2,20 @@ import { useAuthStore } from "@/store/authStore";
 import type { PropsWithChildren } from "react";
 import { Navigate } from "react-router";
 
+export const NotAuthenticatedRoutes = ({ children }: PropsWithChildren) => {
+  const { status } = useAuthStore();
+
+  if (status === 'checking') {
+    return null;
+  }
+
+  if (status === 'logged') {
+    return <Navigate to='/dashboard' />;
+  }
+
+  return children;
+}
+
 export const AuthenticatedRoutes = ({ children }: PropsWithChildren) => {
   const { status } = useAuthStore();
 
