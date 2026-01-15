@@ -3,6 +3,7 @@ import type { PropsWithChildren } from "react";
 interface Props extends PropsWithChildren {
   type: string;
   size?: string;
+  disabled?: boolean
   action: () => void;
 }
 
@@ -21,15 +22,19 @@ const variant: Dictionary = {
   'fit': 'w-full h-10'
 }
 
-export const CustomButton = ({ action, children, type, size = 'md' }: Props) => {
+export const CustomButton = ({ action, children, type, size = 'md', disabled = false }: Props) => {
   return (
     <>
-      <p
-        className={`${variant[type]} ${variant[size]} rounded-lg p-2 cursor-pointer flex justify-center items-center`}
+      <button
+        className={`${variant[type]} ${variant[size]} rounded-lg p-2 cursor-pointer flex justify-center items-center ${disabled ? 'bg-gray-400 opacity-70' : ''}`}
+        disabled={disabled}
         onClick={action}
       >
-        {children}
-      </p>
+        {
+          // sustituir por un spinner
+          disabled ? 'Enviando...' : children
+        }
+      </button>
     </>
   )
 }
