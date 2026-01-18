@@ -10,30 +10,33 @@ import { TbRings, TbStarFilled } from "react-icons/tb";
 interface Props {
   type: string;
   date: number;
+  title?: string;
 }
 
 const classColors: ClassColorDictionary = {
   'CrossFit': 'bg-[var(--color-pink-card)]',
   'Haltero': 'bg-[var(--color-navy-card)]',
-  'Gymnastics': 'bg-[var(--color-darkgray-card)]'
+  'Gymnastics': 'bg-[var(--color-darkgray-card)]',
+  'Special': 'bg-[var(--color-yellow-card)]'
 }
 
 const classIcons: ClassIconDictionary = {
   'CrossFit': <FaDumbbell />,
   'Haltero': <GiWeightLiftingUp />,
-  'Gymnastics': <TbRings />
+  'Gymnastics': <TbRings />,
+  'Special': <TbStarFilled />,
 }
 
 const defaultClassColor = 'bg-[var(--color-yellow-card)]';
 
-export const CardReservationComponent = ({ type, date }: Props) => {
+export const CardReservationComponent = ({ type, date, title }: Props) => {
   return (
     <div className="flex flex-row border-2">
-      <div className={`hidden md:flex w-1/3 h-full ${classColors[type] ?? defaultClassColor} items-center justify-center`}>
+      <div className={`hidden md:flex w-1/3 h-full ${classColors[type]} items-center justify-center`}>
         <IconContext.Provider value={{ color: "white", className: "card-icon" }}>
           <div>
             {
-              classIcons[type] ?? <TbStarFilled />
+              classIcons[type]
             }
           </div>
         </IconContext.Provider>
@@ -41,7 +44,7 @@ export const CardReservationComponent = ({ type, date }: Props) => {
       </div>
       <div className="w-full md:w-2/3 flex flex-row">
         <div className="w-4/5 pl-1 flex flex-col justify-evenly items-center">
-          <p className="text-lg text-center">{type}</p>
+          <p className="text-lg text-center">{title ?? type}</p>
           <p>
             {useParseDate(date, true)}
           </p>
