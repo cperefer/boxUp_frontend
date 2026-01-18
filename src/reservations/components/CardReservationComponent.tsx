@@ -27,8 +27,6 @@ const classIcons: ClassIconDictionary = {
   'Special': <TbStarFilled />,
 }
 
-const defaultClassColor = 'bg-[var(--color-yellow-card)]';
-
 export const CardReservationComponent = ({ type, date, title }: Props) => {
   return (
     <div className="flex flex-row border-2">
