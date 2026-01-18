@@ -29,8 +29,8 @@ const classIcons: ClassIconDictionary = {
 
 export const CardReservationComponent = ({ type, date, title }: Props) => {
   return (
-    <div className="flex flex-row border-2">
-      <div className={`hidden md:flex w-1/3 h-full ${classColors[type]} items-center justify-center`}>
+    <div className="flex flex-row border-2 border-cyan-100 shadow-md min-h-25 rounded-2xl">
+      <div className={`hidden md:flex w-1/3 h-full rounded-l-2xl ${classColors[type]} items-center justify-center`}>
         <IconContext.Provider value={{ color: "white", className: "card-icon" }}>
           <div>
             {
@@ -47,7 +47,7 @@ export const CardReservationComponent = ({ type, date, title }: Props) => {
             {useParseDate(date, true)}
           </p>
         </div>
-        <div className="flex flex-col justify-evenly pr-1">
+        <div className="flex flex-col justify-evenly pr-2">
           <CustomButton type="success" action={() => { }} size='sm'><FiEye /></CustomButton>
           <CustomButton type="error" action={() => { }} size='sm'><FiTrash /></CustomButton>
         </div>
