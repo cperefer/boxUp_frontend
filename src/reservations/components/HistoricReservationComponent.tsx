@@ -1,15 +1,35 @@
+import { useAuthStore } from "@/store/authStore";
 import { CardReservationComponent } from "./CardReservationComponent"
+import { useReservations } from "@/hooks/useReservations";
 
 export const HistoricReservationComponent = () => {
+  const { user } = useAuthStore();
+
+  if (!user) {
+    return;
+  }
+
+  const { data, loading } = useReservations(user?.id)
+
+  if (loading) {
+    return (
+      <p>La están peinando</p>
+    )
+  }
+
+
   return (
     <div>
       <p className="text-xl font-bold">Histórico de reservas</p>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 pr-5">
-        <CardReservationComponent type="CrossFit" date={1768843800000} />
-        <CardReservationComponent type="Haltero" date={1768843800000} />
-        <CardReservationComponent type="Gymnastics" date={1768843800000} />
-        <CardReservationComponent type="Circuncisión de Muti" date={1768843800000} />
-
+        {
+          data.length && data.map(({ type, date }) => {
+            console.log(type)
+            return (
+              <CardReservationComponent type={type} date={date} />
+            )
+          })
+        }
       </div>
     </div>
   )
