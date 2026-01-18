@@ -1,6 +1,6 @@
 export const MembershipComponent = () => {
   return (
-    <div className="px-5 pt-2">
+    <div className="pr-5 pt-2 pb-5">
       <div className="p-2 w-fit border-2 border-primary rounded-lg">
         <p className="text-xl font-bold">Tu suscripción</p>
         <p className="">Cuota ilimitada</p>
