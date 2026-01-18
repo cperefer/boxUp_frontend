@@ -1,10 +1,4 @@
-export interface Reservation {
-  id: number;
-  type: Class;
-  date: number;
-}
-
-type Class = | "CrossFit" | "Halterofilia" | "Gymnastics" | "Endurance"; 
+import type { Reservation } from "@/interfaces/Classes";
 
 export const NextReservationsMock: Reservation[] = [
   {
@@ -24,7 +18,7 @@ export const NextReservationsMock: Reservation[] = [
   },
   {
     id: 4,
-    type: 'Halterofilia',
+    type: 'Haltero',
     date: 1761206400000
   },
   {
