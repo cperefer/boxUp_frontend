@@ -3,7 +3,8 @@ import type { User } from "@/interfaces/User";
 export const userAthlete:User = {
   id: '0',
   email: 'a@a.es',
-  fullName: 'Miguel Pérez',
+  firstName: 'Miguel',
+  lastName: 'Pérez',
   hasActiveAccount: true,
   role: 'athlete'
 }
@@ -11,7 +12,8 @@ export const userAthlete:User = {
 export const userCoach:User = {
   id: '1',
   email: 'b@b.es',
-  fullName: 'Cacharro',
+  firstName: 'Cacharro',
+  lastName: 'No entrena',
   hasActiveAccount: true,
   role: 'athlete'
 }
@@ -19,7 +21,8 @@ export const userCoach:User = {
 export const userAdmin:User = {
   id: '2',
   email: 'c@c.es',
-  fullName: 'Agustín Díaz',
+  firstName: 'Agustín ',
+  lastName: 'Díaz',
   hasActiveAccount: true,
   role: 'admin'
 }

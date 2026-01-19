@@ -4,9 +4,9 @@ import { SubscriptionStatus } from "../components/SubscriptionStatus"
 import { UpcomingEvents } from "../components/UpcomingEvents"
 import { WelcomeUser } from "../components/WelcomeUser"
 
-export const Dashboard = () => {
+export const DashboardPage = () => {
   return (
-    <div>
+    <div className="pt-10">
       <WelcomeUser />
       <div className="flex flex-col md:flex-row md:justify-around pb-2">
         <NextReservations />
