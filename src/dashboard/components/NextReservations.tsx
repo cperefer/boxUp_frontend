@@ -1,4 +1,5 @@
-import { NextReservationsMock, type Reservation } from "@mocks/NextReservations.mock"
+import { NextReservationsMock } from "@mocks/NextReservations.mock"
+import type { Reservation } from "@/interfaces/Classes";
 import { ReservationComponent } from "./ReservationComponent"
 
 export const NextReservations = () => {
