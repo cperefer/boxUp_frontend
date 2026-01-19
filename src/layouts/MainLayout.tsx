@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react"
-import { Outlet } from "react-router"
+import { Outlet, useLocation } from "react-router"
 import { LateralMenu } from "@/lateralMenu/LateralMenu"
 import { Navbar } from "@/components/navbar/Navbar"
 import { useUIStore } from "@/store/uiStore"
 
 export const MainLayout = () => {
+  const location = useLocation();
   const menuRef = useRef<HTMLDivElement>(null)
   const menuButtonRef = useRef<HTMLDivElement>(null)
   const { isMenuOpen, closeMenu } = useUIStore()
@@ -34,6 +35,13 @@ export const MainLayout = () => {
     }
 
   }, [isMenuOpen, closeMenu])
+
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      closeMenu();
+    }
+  }, [location.pathname])
 
   return (
     <div className="min-h-screen">

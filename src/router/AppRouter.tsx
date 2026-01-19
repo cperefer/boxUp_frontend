@@ -1,9 +1,10 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import { Dashboard } from "@/dashboard/pages/Dashboard";
+import { DashboardPage } from "@/dashboard/pages/DashboardPage";
 import { MainLayout } from "@/layouts/MainLayout";
 import { LoginPage } from "@/auth/pages/LoginPage";
 import { AuthLayout } from "@/auth/pages/layouts/AuthLayout";
 import { AuthenticatedRoutes, NotAuthenticatedRoutes } from "./ProtectedRoutes";
+import { ReservationsPage } from "@/reservations/pages/ReservationsPage";
 
 export const appRouter = createBrowserRouter([
   {
@@ -20,15 +21,19 @@ export const appRouter = createBrowserRouter([
     ]
   },
   {
-    path: "/dashboard",
+    path: "/",
     element:
       <AuthenticatedRoutes>
         <MainLayout />
       </AuthenticatedRoutes>,
     children: [
       {
-        index: true,
-        element: <Dashboard />
+        path: '/dashboard',
+        element: <DashboardPage />
+      },
+      {
+        path: '/reservations',
+        element: <ReservationsPage />
       },
     ]
   },
