@@ -29,7 +29,7 @@ export const NextReservationsMock: Reservation[] = [
   {
     id: 6,
     type: 'Special',
-    title: 'Circuncisión de Muti',
-    date: 1761206400000
+    title: 'WOD de navidad',
+    date: 1766221200000
   },
 ] 
