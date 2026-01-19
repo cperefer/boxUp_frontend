@@ -4,7 +4,7 @@ export const NextReservationsMock: Reservation[] = [
   {
     id: 1,
     type: 'CrossFit',
-    date: 1760805000000
+    date: 1768843800000
   },
   {
     id: 2,
