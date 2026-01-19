@@ -24,7 +24,7 @@ export const HistoricReservationComponent = () => {
         }
         {
           !loading && data.length && data.map(({ id, type, date, title }) => (
-            <CardReservationComponent id={id} type={type} date={date} title={title} />
+            <CardReservationComponent key={id} id={id} type={type} date={date} title={title} />
           ))
         }
       </div>
