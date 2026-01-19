@@ -27,6 +27,8 @@ const classIcons: ClassIconDictionary = {
   'Special': <TbStarFilled />,
 }
 
+const cancelReservationDeadline = 1000 * 10 * 60 * 3
+
 export const CardReservationComponent = ({ type, date, title }: Props) => {
   return (
     <div className="flex flex-row border-2 border-cyan-100 shadow-md min-h-25 rounded-2xl">
@@ -49,7 +51,11 @@ export const CardReservationComponent = ({ type, date, title }: Props) => {
         </div>
         <div className="flex flex-col justify-evenly pr-2">
           <CustomButton type="success" action={() => { }} size='sm'><FiEye /></CustomButton>
-          <CustomButton type="error" action={() => { }} size='sm'><FiTrash /></CustomButton>
+          {
+            (date - cancelReservationDeadline > Date.now()) && (
+              <CustomButton type="error" action={() => { }} size='sm'><FiTrash /></CustomButton>
+            )
+          }
         </div>
       </div>
     </div>
