@@ -11,7 +11,7 @@ export const ReservationComponent = ({ reservation }: { reservation: Reservation
         <p><LuCalendarClock className="mr-2" />{useParseDate(reservation.date, true)}</p>
         <p className="ml-2">{reservation.type}</p>
       </div>
-      <div className="flex flex-row items-center w-25 gap-2 border-b border-b-primary">
+      <div className="flex flex-row items-center w-25 gap-2 border-b border-b-primary justify-center">
         <SeeCancelReservationButtons id={reservation.id} date={reservation.date} />
       </div>
     </div>
