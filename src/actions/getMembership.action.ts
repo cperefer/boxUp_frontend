@@ -7,6 +7,10 @@ interface MembershipResponse {
 
 export const getMembershipAction = async (id: string):Promise<MembershipResponse> => {
   await new Promise((res) => setTimeout(res, 500));
+
+  if (id !== '0') {
+    throw new Error('membership not found');
+  }
   
   const data = {
    membership: MembershipMock,
