@@ -7,6 +7,10 @@ interface ReservationsResponse {
 export const getReservationsAction = async (id: string):Promise<ReservationsResponse> => {
   await new Promise((res) => setTimeout(res, 500));
 
+  if(id !== '0') {
+    throw new Error('No reservations found');
+  }
+
   const reservations = NextReservationsMock.sort(
     (a: Reservation, b: Reservation): number => {
       if (a.date > b.date) {
