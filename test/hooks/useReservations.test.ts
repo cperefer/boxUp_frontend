@@ -9,16 +9,26 @@ describe('useReservations', () => {
     expect(result.current.data).toStrictEqual([]);
   });
 
-  it('should be loading while retrieving info', () => {
+  it('should return empty data when id has no reservations', async () => {
     const { result } = renderHook(() => useReservations('1'));
 
-    console.log(result)
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+    });
+
+    expect(result.current.loading).toBe(false);
+    expect(result.current.data).toStrictEqual([]);
+  });
+
+  it('should be loading while retrieving info', () => {
+    const { result } = renderHook(() => useReservations('0'));
+
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toStrictEqual([]);
   });
 
   it('should return reservations data', async () => {
-    const { result } = renderHook(() => useReservations('1'));
+    const { result } = renderHook(() => useReservations('0'));
 
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
