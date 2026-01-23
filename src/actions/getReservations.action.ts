@@ -8,7 +8,9 @@ export const getReservationsAction = async (id: string):Promise<ReservationsResp
   await new Promise((res) => setTimeout(res, 500));
 
   if(id !== '0') {
-    throw new Error('No reservations found');
+    return {
+      reservations: []
+    };
   }
 
   const reservations = NextReservationsMock.sort(
