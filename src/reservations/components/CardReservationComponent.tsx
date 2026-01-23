@@ -1,4 +1,5 @@
 import { CustomButton } from "@/components/custom/CustomButton"
+import { SeeCancelReservationButtons } from "@/components/SeeCancelReservationButtons";
 import { useCancelReservation } from "@/hooks/useCancelReservation";
 import { useParseDate } from "@/hooks/useParseDate";
 import type { ClassColorDictionary, ClassIconDictionary } from "@/interfaces/Classes";
@@ -29,13 +30,9 @@ const classIcons: ClassIconDictionary = {
   'Special': <TbStarFilled />,
 }
 
-const cancelReservationDeadline = 1000 * 10 * 60 * 3
+
 
 export const CardReservationComponent = ({ id, type, date, title }: Props) => {
-  const handleDelete = () => {
-    useCancelReservation(id);
-  }
-
   return (
     <div className="flex flex-row border-2 border-cyan-100 shadow-md min-h-25 rounded-2xl">
       <div className={`hidden md:flex w-1/3 h-full rounded-l-2xl ${classColors[type]} items-center justify-center`}>
@@ -56,12 +53,7 @@ export const CardReservationComponent = ({ id, type, date, title }: Props) => {
           </p>
         </div>
         <div className="flex flex-col justify-evenly pr-2">
-          <CustomButton type="success" action={() => { }} size='sm'><FiEye /></CustomButton>
-          {
-            (date - cancelReservationDeadline > Date.now()) && (
-              <CustomButton type="error" action={handleDelete} size='sm'><FiTrash /></CustomButton>
-            )
-          }
+          <SeeCancelReservationButtons id={id} date={date} />
         </div>
       </div>
     </div>
