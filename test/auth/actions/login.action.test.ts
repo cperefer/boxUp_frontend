@@ -1,7 +1,7 @@
 import { loginAction } from "@/auth/actions/login.action";
 import { describe, expect, it } from "vitest"
 
-describe('useParseDate', () => { 
+describe('Login Action', () => { 
   it('should do login correctly with right credentials', async () => {
     const email = "a@a.es";
     const password = "1234abcd";
