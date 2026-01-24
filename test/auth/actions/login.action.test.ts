@@ -16,9 +16,6 @@ describe('Login Action', () => {
     const email = "b@b.es";
     const password = "wr0ngP4$$";
   
-    await loginAction(email, password).catch((e: Error) => {
-      expect(e.message).toBe('auth error');
-      expect(e).toBeDefined();
-    });
+    await expect(loginAction(email, password)).rejects.toThrow('auth error')
   });
 })
