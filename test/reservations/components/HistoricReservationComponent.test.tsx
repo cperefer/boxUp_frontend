@@ -43,13 +43,12 @@ describe('<HistoricReservationComponent />', () => {
   });
 
   it('should render skeleton while loading', () => {
-    const { container } = render(<HistoricReservationComponent />);
-
-
     useReservationSpy.mockReturnValue({
       data: [],
       loading: true
     })
+
+    const { container } = render(<HistoricReservationComponent />);
 
     expect(container.innerHTML).toContain('react-loading-skeleton');
     expect(container.innerHTML).not.toContain('flex flex-row border-2 border-cyan-100 shadow-md min-h-25 rounded-2xl');
