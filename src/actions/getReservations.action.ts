@@ -7,6 +7,12 @@ interface ReservationsResponse {
 export const getReservationsAction = async (id: string):Promise<ReservationsResponse> => {
   await new Promise((res) => setTimeout(res, 500));
 
+  if(id !== '0') {
+    return {
+      reservations: []
+    };
+  }
+
   const reservations = NextReservationsMock.sort(
     (a: Reservation, b: Reservation): number => {
       if (a.date > b.date) {
