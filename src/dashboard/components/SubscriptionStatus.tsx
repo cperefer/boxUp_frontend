@@ -11,7 +11,7 @@ export const SubscriptionStatus = () => {
       <p className="text-xl">Tus suscripciones activas</p>
       <div>
         {!subscription ? (
-          <MembershipComponent hasBorder={false} hasTitle={false} />
+          <MembershipComponent variant="compact" />
         ) : (
           <p className="text-center text-red-500">
             No tienes suscripciones activas

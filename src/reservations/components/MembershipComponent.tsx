@@ -4,15 +4,16 @@ import { parseDate } from "@/utils/parseDate";
 import type { ReactNode } from "react";
 import Skeleton from "react-loading-skeleton";
 
+type MembershipVariant = "default" | "compact";
+
 interface Props {
-  hasBorder?: boolean;
-  hasTitle?: boolean;
+  variant?: MembershipVariant;
 }
 
-export const MembershipComponent = ({
-  hasBorder = false,
-  hasTitle = false,
-}: Props) => {
+export const MembershipComponent = ({ variant = "default" }: Props) => {
+  const hasBorder = variant === "default";
+  const hasTitle = variant === "default";
+
   const { user } = useAuthStore();
 
   // CADUCAR LA SESION EN ALGUN MOMENTO
