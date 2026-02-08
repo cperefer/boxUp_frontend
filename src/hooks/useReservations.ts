@@ -1,10 +1,10 @@
-import { getReservationsAction } from '@/actions/getReservations.action';
-import type { Reservation } from '@/interfaces/Classes';
-import { useEffect, useState } from 'react';
+import { getReservationsAction } from "@/actions/getReservations.action";
+import type { Reservation } from "@/interfaces/Classes";
+import { useEffect, useState } from "react";
 
-export const useReservations = (id: string) => {
+export const useReservations = (id: string = "") => {
   const [data, setData] = useState<Reservation[]>([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!id) {
@@ -12,17 +12,17 @@ export const useReservations = (id: string) => {
     }
 
     const loadData = async () => {
-      setLoading(true)
+      setLoading(true);
       const result = await getReservationsAction(id);
       setData(result.reservations);
-      setLoading(false)
+      setLoading(false);
     };
 
     loadData();
-  }, [id])
+  }, [id]);
 
   return {
     data,
-    loading
+    loading,
   };
-}
+};
