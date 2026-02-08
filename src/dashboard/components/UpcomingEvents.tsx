@@ -1,15 +1,18 @@
 import { parseDate } from "@/utils/parseDate";
-import { UpcomingEventsMock } from "@/mocks/UpcomingEvents.mock";
+import { useUpcomingEvents } from "@/hooks/useUpcomingEvents";
 
 export const UpcomingEvents = () => {
-  const events = UpcomingEventsMock;
+  const { data, loading } = useUpcomingEvents();
+
   return (
     <section className="flex flex-col items-center py-2 w-full md:w-2/5">
       <p className="text-xl pb-2">Próximos eventos</p>
       <div className="px-2">
-        {events.length ? (
+        {loading ? (
+          <p>Cargando</p>
+        ) : data.length ? (
           <ul>
-            {events.map(({ id, name, date }) => (
+            {data.map(({ id, name, date }) => (
               <li key={id}>
                 <span className="italic">{parseDate(date)}</span> - {name}
               </li>
