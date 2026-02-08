@@ -1,9 +1,9 @@
-import { loginAction } from '@/auth/actions/login.action';
-import type { User } from '@/interfaces/User';
-import { userAthlete } from '@/mocks/user.mock';
-import { create } from 'zustand'
+import { loginAction } from "@/auth/actions/login.action";
+import type { User } from "@/interfaces/User";
+import { userAthlete } from "@/mocks/user.mock";
+import { create } from "zustand";
 
-type AuthStatus = 'logged' | 'not-logged' | 'checking';
+type AuthStatus = "logged" | "not-logged" | "checking";
 
 interface AuthState {
   authToken: string | null;
@@ -17,15 +17,20 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()((set) => ({
   authToken: null,
-  status: 'checking',
+  status: "checking",
   user: null,
   checkAuth: () => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
+    const isSessionExpired = !!(
+      Date.now() - Number(token) >
+      1000 * 60 * 60 * 2 // 2 horas
+    );
 
-    if (!token) {
+    if (!token || isSessionExpired) {
+      localStorage.removeItem("token");
       set({
         authToken: null,
-        status: 'not-logged',
+        status: "not-logged",
         user: null,
       });
 
@@ -34,39 +39,41 @@ export const useAuthStore = create<AuthState>()((set) => ({
 
     try {
       // Validar token (que ahora no se hace, obvio, porque como no lo valide contra mis narices...)
-    
+
       set({
         authToken: token,
         user: userAthlete,
-        status: 'logged'
-      })
-    } catch(_) {
+        status: "logged",
+      });
+    } catch (err) {
+      console.error(err);
       set({
         authToken: null,
-        status: 'not-logged',
+        status: "not-logged",
         user: null,
       });
     }
   },
   login: async (email: string, password: string) => {
-    set({status: 'checking'});
+    set({ status: "checking" });
 
     try {
       const data = await loginAction(email, password);
-      console.log(data)
-      localStorage.setItem('token', data.token);
-  
+      console.log(data);
+      localStorage.setItem("token", data.token);
+
       set({
         user: data.user,
         authToken: data.token,
-        status: 'logged',
+        status: "logged",
       });
-  
+
       return true;
-    } catch (_) {
+    } catch (err) {
+      console.error(err);
       set({
         authToken: null,
-        status: 'not-logged',
+        status: "not-logged",
         user: null,
       });
 
@@ -76,13 +83,13 @@ export const useAuthStore = create<AuthState>()((set) => ({
   logout: () => {
     set({
       authToken: null,
-      status: 'not-logged',
+      status: "not-logged",
       user: null,
     });
 
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   },
   register: () => {
     // set({ isMenuOpen: false })
-  }
-}))
+  },
+}));
