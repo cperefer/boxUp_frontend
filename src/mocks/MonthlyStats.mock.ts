@@ -6,7 +6,7 @@ export const MonthlyStatsMock: MonthlyStat[] = [
     type: "numClasses",
   },
   {
-    description: "Enhorabuena! Estás en el top 1 de asistencia",
+    description: "Enhorabuena! Estás en el 1% de asistencia",
     type: "topAssist",
   },
   {
