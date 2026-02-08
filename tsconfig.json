@@ -8,6 +8,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@interfaces*": ["./src/interfaces*"],
       "@hooks*": ["./src/hooks*"],
       "@mocks/*": ["./src/mocks*"]
     }
