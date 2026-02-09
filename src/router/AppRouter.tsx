@@ -6,6 +6,7 @@ import { AuthLayout } from "@/auth/pages/layouts/AuthLayout";
 import { AuthenticatedRoutes, NotAuthenticatedRoutes } from "./ProtectedRoutes";
 import { ReservationsPage } from "@/reservations/pages/ReservationsPage";
 import { ClassesPage } from "@/classes/pages/ClassesPage";
+import { LeaderboardPage } from "@/leaderboard/pages/LeaderboardPage";
 
 export const appRouter = createBrowserRouter([
   {
@@ -33,16 +34,20 @@ export const appRouter = createBrowserRouter([
         element: <Navigate to="/dashboard" replace />
       },
       {
+        path: '/classes',
+        element: <ClassesPage />
+      },
+      {
         path: '/dashboard',
         element: <DashboardPage />
       },
       {
-        path: '/reservations',
-        element: <ReservationsPage />
+        path: '/leaderboard',
+        element: <LeaderboardPage />
       },
       {
-        path: '/classes',
-        element: <ClassesPage />
+        path: '/reservations',
+        element: <ReservationsPage />
       },
     ]
   },
