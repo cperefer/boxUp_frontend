@@ -7,6 +7,7 @@ import { AuthenticatedRoutes, NotAuthenticatedRoutes } from "./ProtectedRoutes";
 import { ReservationsPage } from "@/reservations/pages/ReservationsPage";
 import { ClassesPage } from "@/classes/pages/ClassesPage";
 import { LeaderboardPage } from "@/leaderboard/pages/LeaderboardPage";
+import { PRsPage } from "@/prs/pages/PRsPage";
 
 export const appRouter = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const appRouter = createBrowserRouter([
       {
         path: '/leaderboard',
         element: <LeaderboardPage />
+      },
+      {
+        path: '/prs',
+        element: <PRsPage />
       },
       {
         path: '/reservations',
