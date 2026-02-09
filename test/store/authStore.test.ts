@@ -1,5 +1,4 @@
 import { useAuthStore } from "@/store/authStore";
-import { waitFor } from "@testing-library/dom";
 import { describe, expect, it, beforeEach, vi } from "vitest";
 
 describe("authStore", () => {
@@ -9,6 +8,9 @@ describe("authStore", () => {
       status: "checking",
       user: null,
     });
+
+    vi.useRealTimers();
+    localStorage.clear();
   });
 
   it("should stays unlogged if there is no token in the store", () => {
@@ -23,15 +25,15 @@ describe("authStore", () => {
     expect(token).toBeNull();
   });
 
-  it("should loging ok", async () => {
+  it("should loging successfuly", async () => {
     const email = "a@a.es";
     const password = "1234abcd";
 
     useAuthStore.getState().login(email, password);
 
-    await waitFor(() => {
-      expect(useAuthStore.getState().status).toBe("logged");
-    });
+    const result = await useAuthStore.getState().login(email, password);
+
+    expect(result).toBe(true);
 
     const { authToken, status, user } = useAuthStore.getState();
     const token = localStorage.getItem("token");
@@ -50,15 +52,13 @@ describe("authStore", () => {
     expect(token).toBeDefined();
   });
 
-  it("should logout ok", async () => {
+  it("should logout successfully", async () => {
     const email = "a@a.es";
     const password = "1234abcd";
 
-    useAuthStore.getState().login(email, password);
+    const result = await useAuthStore.getState().login(email, password);
 
-    await waitFor(() => {
-      expect(useAuthStore.getState().status).toBe("logged");
-    });
+    expect(result).toBe(true);
 
     useAuthStore.getState().logout();
 
@@ -88,6 +88,21 @@ describe("authStore", () => {
     expect(authToken).toBeDefined();
     expect(user).not.toBeNull();
     expect(token).toBeDefined();
+  });
+
+  it("session should remain exactly at 2 hours boundary", () => {
+    vi.useFakeTimers();
+
+    const now = new Date("2026-02-09T10:00:00Z");
+    vi.setSystemTime(now);
+
+    const exactlyTwoHoursAgo = now.getTime() - 1000 * 60 * 60 * 2;
+
+    localStorage.setItem("token", String(exactlyTwoHoursAgo));
+
+    useAuthStore.getState().checkAuth();
+
+    expect(useAuthStore.getState().status).toBe("logged");
   });
 
   it("session should be empty if token is expired", async () => {
