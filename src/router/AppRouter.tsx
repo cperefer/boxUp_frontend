@@ -5,6 +5,7 @@ import { LoginPage } from "@/auth/pages/LoginPage";
 import { AuthLayout } from "@/auth/pages/layouts/AuthLayout";
 import { AuthenticatedRoutes, NotAuthenticatedRoutes } from "./ProtectedRoutes";
 import { ReservationsPage } from "@/reservations/pages/ReservationsPage";
+import { ClassesPage } from "@/classes/pages/ClassesPage";
 
 export const appRouter = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const appRouter = createBrowserRouter([
       {
         path: '/reservations',
         element: <ReservationsPage />
+      },
+      {
+        path: '/classes',
+        element: <ClassesPage />
       },
     ]
   },
