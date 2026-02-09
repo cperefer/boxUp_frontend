@@ -1,6 +1,7 @@
 import { loginAction } from "@/auth/actions/login.action";
 import type { User } from "@/interfaces/User";
 import { userAthlete } from "@/mocks/user.mock";
+import { isSessionExpired } from "@/utils/isSessionExpired";
 import { create } from "zustand";
 
 type AuthStatus = "logged" | "not-logged" | "checking";
@@ -21,12 +22,8 @@ export const useAuthStore = create<AuthState>()((set) => ({
   user: null,
   checkAuth: () => {
     const token = localStorage.getItem("token");
-    const isSessionExpired = !!(
-      Date.now() - Number(token) >
-      1000 * 60 * 60 * 2 // 2 horas
-    );
 
-    if (!token || isSessionExpired) {
+    if (!token || isSessionExpired(Number(token), Date.now())) {
       localStorage.removeItem("token");
       set({
         authToken: null,
