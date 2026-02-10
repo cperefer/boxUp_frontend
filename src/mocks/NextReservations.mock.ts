@@ -37,7 +37,7 @@ export const NextReservationsMock: Reservation[] = [
 
 export const DemoReservationsMock: Reservation[] = [
   {
-    id: 1,
+    id: 0,
     type: "CrossFit",
     date: getMockedValidDate("tomorrow"),
   },
