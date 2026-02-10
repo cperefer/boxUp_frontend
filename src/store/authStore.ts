@@ -21,7 +21,11 @@ export const useAuthStore = create<AuthState>()((set) => ({
   user: null,
   checkAuth: () => {
     const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user") ?? "");
+    let user = null;
+
+    if (localStorage.getItem("user")) {
+      user = JSON.parse(localStorage.getItem("user") || "");
+    }
 
     if (!user || !token || isSessionExpired(Number(token), Date.now())) {
       localStorage.removeItem("token");
