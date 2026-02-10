@@ -1,3 +1,4 @@
+import { userAthlete } from "@/mocks/user.mock";
 import { useAuthStore } from "@/store/authStore";
 import { describe, expect, it, beforeEach, vi } from "vitest";
 
@@ -18,11 +19,13 @@ describe("authStore", () => {
 
     const { authToken, status, user } = useAuthStore.getState();
     const token = localStorage.getItem("token");
+    const userStorage = localStorage.getItem("user");
 
     expect(status).toBe("not-logged");
     expect(authToken).toBeNull();
     expect(user).toBeNull();
     expect(token).toBeNull();
+    expect(userStorage).toBeNull();
   });
 
   it("should loging successfuly", async () => {
@@ -37,6 +40,7 @@ describe("authStore", () => {
 
     const { authToken, status, user } = useAuthStore.getState();
     const token = localStorage.getItem("token");
+    const userStorage = localStorage.getItem("user");
 
     expect(status).toBe("logged");
     expect(authToken).toBeDefined();
@@ -50,6 +54,7 @@ describe("authStore", () => {
     });
 
     expect(token).toBeDefined();
+    expect(userStorage).toBeDefined();
   });
 
   it("should logout successfully", async () => {
@@ -78,6 +83,7 @@ describe("authStore", () => {
 
     const almostExpiredToken = now.getTime() - 1000 * 60 * 119;
     localStorage.setItem("token", String(almostExpiredToken));
+    localStorage.setItem("user", JSON.stringify(userAthlete));
 
     useAuthStore.getState().checkAuth();
 
@@ -99,6 +105,7 @@ describe("authStore", () => {
     const exactlyTwoHoursAgo = now.getTime() - 1000 * 60 * 60 * 2;
 
     localStorage.setItem("token", String(exactlyTwoHoursAgo));
+    localStorage.setItem("user", JSON.stringify(userAthlete));
 
     useAuthStore.getState().checkAuth();
 
@@ -112,15 +119,18 @@ describe("authStore", () => {
 
     const expiredToken = now.getTime() - 1000 * 60 * 121;
     localStorage.setItem("token", String(expiredToken));
+    localStorage.setItem("user", JSON.stringify(userAthlete));
 
     useAuthStore.getState().checkAuth();
 
     const { authToken, status, user } = useAuthStore.getState();
     const token = localStorage.getItem("token");
+    const userStorage = localStorage.getItem("user");
 
     expect(status).toBe("not-logged");
     expect(authToken).toBeNull();
     expect(user).toBeNull();
     expect(token).toBeNull();
+    expect(userStorage).toBeDefined();
   });
 });

@@ -1,20 +1,22 @@
 import type { Membership } from "@/interfaces/Membership";
-import { MembershipMock } from "@/mocks/Membership.mock";
+import { DemoMembershipMock, MembershipMock } from "@/mocks/Membership.mock";
 
 interface MembershipResponse {
   membership: Membership;
 }
 
-export const getMembershipAction = async (id: string):Promise<MembershipResponse> => {
+export const getMembershipAction = async (
+  id: string,
+): Promise<MembershipResponse> => {
   await new Promise((res) => setTimeout(res, 500));
 
-  if (id !== '0') {
-    throw new Error('membership not found');
-  }
-  
-  const data = {
-   membership: MembershipMock,
+  if (id !== "0" && id !== "99") {
+    throw new Error("membership not found");
   }
 
+  const data = {
+    membership: id === "99" ? DemoMembershipMock : MembershipMock,
+  };
+
   return data;
-}
+};
