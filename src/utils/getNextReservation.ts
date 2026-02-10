@@ -1,9 +1,19 @@
 import type { Reservation } from "@/interfaces/Classes";
 
 export const getNextReservation = (reservations: Reservation[]) => {
-  const ret = reservations
-    .filter((reservation) => reservation.date - Date.now() > 0)
-    .reduce((prev, curr) => (prev.date < curr.date ? prev : curr));
+  if (!reservations.length) {
+    return null;
+  }
 
-  return ret;
+  const nextReservations = reservations.filter(
+    (reservation) => reservation.date - Date.now() > 0,
+  );
+
+  if (!nextReservations.length) {
+    return null;
+  }
+
+  return nextReservations.reduce((prev, curr) =>
+    prev.date < curr.date ? prev : curr,
+  );
 };
