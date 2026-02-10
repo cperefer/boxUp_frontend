@@ -1,4 +1,5 @@
 import type { Reservation } from "@/interfaces/Classes";
+import { getMockedValidDate } from "@/utils/getMockedValidDate";
 
 export const NextReservationsMock: Reservation[] = [
   {
@@ -38,11 +39,21 @@ export const DemoReservationsMock: Reservation[] = [
   {
     id: 1,
     type: "CrossFit",
-    date: 1768843800000,
+    date: getMockedValidDate("tomorrow"),
+  },
+  {
+    id: 1,
+    type: "CrossFit",
+    date: getMockedValidDate(),
   },
   {
     id: 2,
     type: "CrossFit",
-    date: 1760977800000,
+    date: getMockedValidDate("yesterday"),
+  },
+  {
+    id: 3,
+    type: "Special",
+    date: getMockedValidDate("saturday"),
   },
 ];
