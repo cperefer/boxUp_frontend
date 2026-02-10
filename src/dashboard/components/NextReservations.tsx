@@ -6,6 +6,7 @@ import Skeleton from "react-loading-skeleton";
 
 export const NextReservations = () => {
   const { user } = useAuthStore();
+  console.log(user);
   const { data, loading } = useReservations(user?.id);
 
   return (
