@@ -1,6 +1,6 @@
-export const getMockedValidDate = (when: string = "") => {
+export const getMockedValidDate = (when: string = "", midnight = false) => {
   const now = new Date();
-  const targetDate = new Date(now);
+  let targetDate = new Date(now);
   const hour = when === "saturday" ? 10 : 18;
   const minutes = when === "saturday" ? 0 : 30;
 
@@ -18,7 +18,15 @@ export const getMockedValidDate = (when: string = "") => {
     targetDate.setDate(now.getDate() - daysSinceLastSaturday);
   }
 
-  targetDate.setHours(hour, minutes, 0, 0);
+  if (when === "month") {
+    targetDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+  }
+
+  if (midnight || when === "month") {
+    targetDate.setHours(0, 0, 0, 0);
+  } else {
+    targetDate.setHours(hour, minutes, 0, 0);
+  }
 
   return targetDate.getTime();
 };
