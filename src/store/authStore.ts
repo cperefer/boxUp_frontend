@@ -1,6 +1,5 @@
 import { loginAction } from "@/auth/actions/login.action";
 import type { User } from "@/interfaces/User";
-import { userAthlete } from "@/mocks/user.mock";
 import { isSessionExpired } from "@/utils/isSessionExpired";
 import { create } from "zustand";
 
@@ -22,8 +21,9 @@ export const useAuthStore = create<AuthState>()((set) => ({
   user: null,
   checkAuth: () => {
     const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user") ?? "");
 
-    if (!token || isSessionExpired(Number(token), Date.now())) {
+    if (!user || !token || isSessionExpired(Number(token), Date.now())) {
       localStorage.removeItem("token");
       set({
         authToken: null,
@@ -39,7 +39,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
 
       set({
         authToken: token,
-        user: userAthlete,
+        user,
         status: "logged",
       });
     } catch (err) {
@@ -58,6 +58,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
       const data = await loginAction(email, password);
       console.log(data);
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       set({
         user: data.user,
@@ -84,6 +85,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
       user: null,
     });
 
+    localStorage.removeItem("user");
     localStorage.removeItem("token");
   },
   register: () => {
