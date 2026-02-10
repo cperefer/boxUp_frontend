@@ -16,7 +16,6 @@ export const MembershipComponent = ({ variant = "default" }: Props) => {
 
   const { user } = useAuthStore();
 
-  // CADUCAR LA SESION EN ALGUN MOMENTO
   const isNearlyOversubscription = (date: number): ReactNode => {
     const today = new Date().getDate();
     const endDay = new Date(date).getDate();
