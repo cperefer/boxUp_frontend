@@ -23,10 +23,10 @@ export const WelcomeUser = ({ data, loading }: Props) => {
       <p className="text-white">
         {loading ? (
           <span className="invisible">cargando</span>
+        ) : reservation ? (
+          <>Tu próxima reserva es {parseDate(reservation.date, true)}</>
         ) : (
-          reservation && (
-            <>Tu próxima reserva es {parseDate(reservation.date, true)}</>
-          )
+          <>No tienes próximas reservas</>
         )}
       </p>
     </section>
