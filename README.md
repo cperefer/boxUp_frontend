@@ -45,7 +45,7 @@ The application includes a demo access with mocked data, allowing anyone to expl
 - Business logic is centralized in **actions**, keeping UI components clean and focused on rendering.
 - **Custom hooks** are used to encapsulate reusable stateful logic and side effects.
 - The project structure allows an easy transition from mocked data to a real backend without impacting the UI.
-- The main focus of the project is **scalability and maintainability**, not just feature delivery.
+- The main focus of the project is **scalability and maintainability**.
 
 ## Steps for usage
 

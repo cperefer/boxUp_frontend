@@ -18,8 +18,6 @@ export const getReservationsAction = async (
     };
   }
 
-  console.log(id);
-
   const obtainedReservations =
     id === "99" ? DemoReservationsMock : NextReservationsMock;
 

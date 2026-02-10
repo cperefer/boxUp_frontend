@@ -1,14 +1,13 @@
 import type { Reservation } from "@/interfaces/Classes";
 import { ReservationComponent } from "./ReservationComponent";
-import { useAuthStore } from "@/store/authStore";
-import { useReservations } from "@/hooks/useReservations";
 import Skeleton from "react-loading-skeleton";
 
-export const NextReservations = () => {
-  const { user } = useAuthStore();
-  console.log(user);
-  const { data, loading } = useReservations(user?.id);
+interface Props {
+  data: Reservation[];
+  loading: boolean;
+}
 
+export const NextReservations = ({ data, loading }: Props) => {
   return (
     <section className="flex flex-col items-center py-2 w-full md:w-2/5">
       <p className="text-xl">Últimas reservas</p>
