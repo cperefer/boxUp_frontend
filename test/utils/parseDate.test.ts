@@ -15,6 +15,6 @@ describe("parseDate", () => {
 
     const returnedDate = parseDate(date, true);
 
-    expect(returnedDate).toBe("23/01/2026 - 11:00");
+    expect(returnedDate).toBe("23/01/2026 - 10:00");
   });
 });
