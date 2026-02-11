@@ -36,7 +36,13 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: '/classes',
-        element: <ClassesPage />
+        element: <ClassesPage />, 
+        children: [
+          {
+            path: '/classes/:id',
+            element: <ClassesPage />
+          },
+        ]
       },
       {
         path: '/dashboard',
