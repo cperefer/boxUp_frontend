@@ -48,7 +48,7 @@ export const LoginPage = () => {
   return (
     <div className="w-5/6 lg:w-2/3 flex flex-col lg:flex-row justify-center items-center">
       <div className="w-full lg:w-1/2 h-4/6 max-h-150 flex flex-col px-10 bg-white relative">
-        <p className="text-2lg font-bold py-3">Bienvenido de nuevo!</p>
+        <p className="text-2xl font-bold py-3">Bienvenido de nuevo!</p>
         <p className="text-lg pb-3">
           Inicia sesión para acceder a tu información
         </p>
